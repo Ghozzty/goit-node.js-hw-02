@@ -6,19 +6,11 @@ const delCont = async (req, res, next) => {
 
     const delContact = await contactsOperations.removeContact(contactId);
     if (!delContact) {
-      res.status(404).json({
-        stasus: "error",
-        code: 404,
-        message: "Not Found",
-      });
+      res.status(404).json({ message: "Not Found" });
       return;
     }
 
-    res.status(200).json({
-      status: "success",
-      code: 200,
-      message: "contact deleted",
-    });
+    res.status(200).json({ message: "contact deleted" });
   } catch (error) {
     next(error);
   }

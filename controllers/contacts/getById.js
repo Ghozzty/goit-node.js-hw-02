@@ -9,13 +9,7 @@ const getById = async (req, res, next) => {
     if (!contact) {
       throw createError(404, `contact with id=${contactId} not found`);
     }
-    res.json({
-      status: "success",
-      code: 200,
-      data: {
-        contact,
-      },
-    });
+    res.status(200).json(contact);
   } catch (error) {
     next(error);
   }

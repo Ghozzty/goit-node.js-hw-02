@@ -27,13 +27,15 @@ const removeContact = async (contactId) => {
   if (newContactsList.length === allContacts.length) {
     return null;
   }
+  const deletedContact = allContacts.find((cont) => cont.id === contactId);
 
   await fs.writeFile(contactsPath, JSON.stringify(newContactsList));
-  return true;
+
+  return deletedContact;
 };
 
 const addContact = async ({ name, email, phone }) => {
-  const newCont = { name, email, phone, id: uuidv4() };
+  const newCont = { id: uuidv4(), name, email, phone };
 
   const allContacts = await listContacts();
 
@@ -52,7 +54,7 @@ const updateContact = async (contactId, { name, email, phone }) => {
   if (contIndex === -1) {
     return null;
   }
-  allContacts[contIndex] = { name, email, phone, id: contactId };
+  allContacts[contIndex] = { id: contactId, name, email, phone };
 
   await fs.writeFile(contactsPath, JSON.stringify(allContacts, null, 2));
   return allContacts[contIndex];

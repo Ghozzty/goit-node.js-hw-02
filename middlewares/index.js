@@ -1,7 +1,6 @@
-const validationNewCont = require("./validationNewCont");
-const validateUpdateContact = require("./validateUpdateContact");
+const validation = require('./validation')
 
 module.exports = {
-  validationNewCont,
-  validateUpdateContact,
+  validation
 };
+

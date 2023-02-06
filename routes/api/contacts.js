@@ -2,10 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const {
-  validateUpdateContact,
-  validationNewCont,
-} = require("../../middlewares");
+const { validation } = require('../../middlewares')
 
 const { contactSchema } = require("../../shemas");
 
@@ -15,13 +12,15 @@ router.get("/", ctrls.getAll);
 
 router.get("/:contactId", ctrls.getById);
 
-router.post("/", validationNewCont(contactSchema), ctrls.addCont);
+router.post("/", validation
+(contactSchema), ctrls.addCont);
 
 router.delete("/:contactId", ctrls.delCont);
 
 router.put(
   "/:contactId",
-  validateUpdateContact(contactSchema),
+  validation
+  (contactSchema),
   ctrls.updateCont
 );
 

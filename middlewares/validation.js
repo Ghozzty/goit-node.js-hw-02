@@ -3,6 +3,7 @@ const validation = (shema) => {
     const { error } = shema.validate(req.body);
 
     if (error) {
+      
       error.status = 400;
       
       next(error);

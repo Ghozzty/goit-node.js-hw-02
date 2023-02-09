@@ -3,12 +3,6 @@ const { Contact } = require('../../models')
 const updateFavorite = async (req, res, next) => {
   try {
     const { favorite } = req.body;
-    
-    if(!favorite){
-        res.status(400).json({message: "missing field favorite"});
-      return;
-    }
-
     const { contactId } = req.params;
 
     const updatedContact = await Contact.findByIdAndUpdate(

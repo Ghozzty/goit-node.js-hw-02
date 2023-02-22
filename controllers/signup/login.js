@@ -22,7 +22,13 @@ const login = async(req, res, next) => {
 
         await User.findByIdAndUpdate(user._id,{token})
 
-        res.status(200).json(token);
+        res.status(200).json({
+            "token": token,
+            "user": {
+              "email": email,
+              "subscription": user.subscription
+            }
+          });
 
 
     } catch (error) {

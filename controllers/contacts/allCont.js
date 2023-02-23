@@ -6,15 +6,11 @@ const getAll = async (req, res, next) => {
     const { _id } = req.user;
     const {page , limit, favorite} = req.query;
     const skip = (page - 1) * limit;
-    let options;
+    let options = {owner: _id};
 
     if (favorite){
-      options = {favorite: { $eq: true }};
-    
-    } else {
-      options = {owner: _id};
-
-    }
+      options = {$and: [ {owner: _id}, {favorite: { $eq: true }} ]};
+    } 
     
     const data = await Contact.find(options, '', { skip: skip, limit: Number(limit)}).populate('owner', '_id email');
     

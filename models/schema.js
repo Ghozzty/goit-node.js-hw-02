@@ -36,6 +36,8 @@ const favoriteSchemaJoi = Joi.object({
   favorite: Joi.boolean().required().error(new Error('missing field favorite')),
 });
 
+
+
 module.exports = {
   Contact,
   contactSchemaJoi,

@@ -48,7 +48,7 @@ const userShema = Schema({
   })
 
   const resendingSchemaJoi = Joi.object({
-    email: Joi.string().required()
+    email: Joi.string().required().error(new Error('missing required field email'))
   });
  
 

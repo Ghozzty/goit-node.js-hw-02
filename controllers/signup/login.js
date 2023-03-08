@@ -16,7 +16,7 @@ const login = async(req, res, next) => {
         }
         
         if(!user.verify){
-            throw createError(401, `Verify is wrong`);
+            throw createError(401, `User isn't verify`);
 
         }
 
